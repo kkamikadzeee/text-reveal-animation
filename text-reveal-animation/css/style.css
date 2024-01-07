@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Zen+Dots&display=swap');
+/* Start Global Rules */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root{
+  --secColor:#2C2D2A;
+  --thrColor:#fff;
+  --fontTitle: 'Alex Brush', cursive;
+  --fontSpecial:'Zen Dots', cursive;
+}
+::selection{
+  background-color: var(--secColor);
+  color: var(--thrColor);
+}
+.darkMode ::selection{
+  background-color: var(--thrColor);
+  color: var(--secColor);
+}
+html{
+  scroll-behavior: smooth;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  margin-left:auto;
+  margin-right:auto;
+  padding-left:15px;
+  padding-right:15px;
+}
+/* @Media */
+@media(min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@media(min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large */
+@media(min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rules */
+/* Start Navbar*/
+.navbar{
+  background-color: var(--secColor);
+  position: fixed;
+  width: 100%;
+  z-index: 99999;
+}
+.darkMode .navbar{
+  background-color: var(--thrColor);
+}
+.navbar .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar .logo{
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 27px;
+  color: var(--thrColor);
+  font-family:var(--fontTitle);
+}
+.darkMode .navbar .logo{
+  color: var(--secColor);
+}
+.navbar .nav{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  gap: 10px;
+}
+/* Start Menu Icon */
+.navbar .nav .menu-icon{
+  width: 25px;
+  height: 14px;
+  cursor: pointer;
+  position: relative;
+  display: none;
+}
+.navbar .nav .menu-icon span {
+  background-color: var(--thrColor);
+  height: 3px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  transition: all .3s ease;
+}
+.darkMode .navbar .nav .menu-icon span{
+  background-color: var(--secColor);
+}
+.navbar .nav .menu-icon span:first-child {
+  top: 0;
+}
+.navbar .nav .menu-icon span:nth-child(2) {
+  top: 6px;
+}
+.navbar .nav .menu-icon span:last-child {
+  top: 12px;
+}
+.navbar .nav .menu-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+.navbar .nav .menu-icon.active span:first-child,
+.navbar .nav .menu-icon.active span:last-child {
+  top: 6px;
+  background-color:var(--thrColor);
+}
+.darkMode .navbar .nav .menu-icon.active span:first-child,
+.darkMode .navbar .nav .menu-icon.active span:last-child {
+  background-color: var(--secColor);
+}
+.navbar .nav .menu-icon.active span:first-child {
+  transform: rotate(45deg);
+}
+.navbar .nav .menu-icon.active span:last-child {
+  transform: rotate(-45deg);
+}
+/* End Menu icon */
+.navbar .nav .navigation{
+  display: flex;
+  overflow: hidden;
+  z-index: 999;
+}
+.navbar .nav .navigation > li > a{
+  color:var(--thrColor);
+  padding: 0 20px;
+  font-size: 19px;
+  position: relative;
+  z-index: 9;
+}
+.darkMode .navbar .nav .navigation > li > a{
+  color: var(--secColor);
+}
+@media(max-width:768px){
+  .navbar .nav .menu-icon{
+    display: block;
+  }
+  .navbar .nav .navigation{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 72px;
+    right: 0;
+    width: 0;
+    height: 800px;
+    background: var(--secColor);
+    transition: var(--mainTransition);
+  }
+  .darkMode .navbar .nav .navigation{
+    background: var(--thrColor);
+  }
+  .navbar .nav .navigation.active{
+    width: 200px;
+  }
+  .navbar .nav .navigation > li{
+    padding: 10px 20px 10px 5px;
+    border-bottom: 1px solid var(--mainColor);
+  }
+}
+.navbar .nav .navigation > li > a::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left:50%;
+  width:0;
+  height:0;
+  border-radius: 4px;
+  background-color: var(--thrColor);
+  transition: var(--mainTransition);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.navbar .nav .navigation > li > a:hover{
+  color: var(--secColor);
+}
+.darkMode .navbar .nav .navigation > li > a:hover{
+  color: var(--thrColor);
+}
+.navbar .nav .navigation > li > a:hover::before{
+  width: 100%;
+  height: 100%;
+}
+.darkMode .navbar .nav .navigation > li > a::before{
+  background-color: var(--secColor);
+}
+label{
+  margin-bottom: 17px;
+}
+label .action{
+  cursor: pointer;
+  color: var(--mainColor);
+}
+label .action input {
+  appearance: none;
+}
+label .action i{
+  position: relative;
+  width: 40px;
+  height: 21px;
+  background: var(--thrColor);
+  border-radius: 10px;
+  display: block;
+}
+label .action i::before{
+  content: '';
+  position: absolute;
+  top: 2.5px;
+  left: 2.5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 10px;
+  background: var(--secColor);
+  box-shadow: 0 2px 4px rgba(0,0,0, .1);
+  transition: .3s;
+}
+label .action input:checked ~ i::before{
+  left: calc(100% - 17.5px);
+}
+.darkMode label .action input:checked ~ i::before{
+  background: var(--thrColor);
+}
+.darkMode label .action input:checked ~ i{
+  background-color: var(--secColor);
+}
+.slider{
+  width: 100%;
+  height: calc(100vh + 72px);
+  background-image: url("../imgs/ramadan2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: fixed;
+  position: relative;
+}
+.slider .auto-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+}
+.slider .auto-text .title{
+  font-size: 5.5rem;
+  font-family: var(--fontTitle);
+  cursor: pointer;
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: -600px 0;
+  background-image: linear-gradient(var(--secColor), var(--secColor));
+  -webkit-text-stroke:1px var(--secColor);
+  -moz-text-stroke:1px var(--secColor);
+  -o-text-stroke:1px var(--secColor);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  animation: backgroundcolor 4s linear infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.darkMode .slider .auto-text .title{
+  background-image: linear-gradient(var(--thrColor), var(--thrColor));
+  -webkit-text-stroke:1px var(--thrColor);
+  -moz-text-stroke:1px var(--thrColor);
+  -o-text-stroke:1px var(--thrColor);
+}
+.slider .auto-text p{
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--secColor);
+  font-family: var(--fontSpecial);
+}
+.darkMode .slider .auto-text p{
+  color: var(--thrColor);
+}
+.slider .auto-text .join{
+  color: var(--thrColor);
+  background-color: var(--secColor);
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  font-family: var(--fontSpecial);
+  padding: 8px 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--mainTransition);
+  margin: 20px;
+}
+.darkMode .slider .auto-text .join{
+  color: var(--secColor);
+  background-color: var(--thrColor);
+}
+.slider .auto-text .join:hover{
+  background: var(--thrColor);
+  color: var(--secColor);
+}
+.darkMode .slider .auto-text .join:hover{
+  background: var(--secColor);
+  color: var(--thrColor);
+}
+@keyframes backgroundcolor{
+  100%{
+    background-position: 0 0;
+  }
+}
